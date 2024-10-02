@@ -11,11 +11,9 @@ impl Maestro {
         Ok(tx_manager_states)
     }
 
-    pub async fn tx_manager_submit(&self, cbor: &str) -> Result<BasicResponse, Box<dyn Error>> {
+    pub async fn tx_manager_submit(&self, cbor_bytes: Vec<u8>) -> Result<String, Box<dyn Error>> {
         let url = "/txmanager";
-        let resp = self.post(url, cbor.to_string()).await?;
-        let submit_tx = serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
-        Ok(submit_tx)
+        self.post_cbor(url, cbor_bytes).await
     }
 
     pub async fn tx_manager_submit_turbo(

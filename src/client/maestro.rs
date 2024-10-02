@@ -71,4 +71,20 @@ impl Maestro {
         self.send_request(req, &mut response_body).await?;
         Ok(response_body)
     }
+
+    pub async fn post_cbor(
+        &self,
+        url: &str,
+        cbor_bytes: Vec<u8>,
+    ) -> Result<String, Box<dyn std::error::Error>> {
+        let req = self
+            .http_client
+            .post(format!("{}{}", &self.base_url, url))
+            .header("Content-Type", "application/cbor")
+            .body(cbor_bytes);
+
+        let mut response_body = String::new();
+        self.send_request(req, &mut response_body).await?;
+        Ok(response_body)
+    }
 }
