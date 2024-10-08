@@ -43,7 +43,9 @@ impl Maestro {
             *response_body = response.text().await?;
             Ok(())
         } else {
-            Err(format!("Error: {}", response.status()).into())
+            let status = response.status();
+            println!("ERROR: {:?}", response.text().await);
+            Err(format!("Error: {}", status).into())
         }
     }
 
