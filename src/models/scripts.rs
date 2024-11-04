@@ -4,8 +4,11 @@ use serde::Serialize;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum ScriptVersion {
+    #[serde(alias = "plutusv1")]
     PlutusV1,
+    #[serde(alias = "plutusv2")]
     PlutusV2,
+    #[serde(alias = "plutusv3")]
     PlutusV3,
 }
 
