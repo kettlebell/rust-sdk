@@ -63,7 +63,7 @@ pub struct TransactionDetail {
     pub redeemers: Redeemers,
     pub reference_inputs: Vec<serde_json::Value>,
     pub scripts_executed: Vec<Script>,
-    pub scripts_succesful: bool,
+    pub scripts_successful: bool,
     pub size: i64,
     pub tx_hash: String,
     pub withdrawals: Vec<serde_json::Value>,
