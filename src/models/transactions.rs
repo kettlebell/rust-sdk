@@ -60,7 +60,7 @@ pub struct TransactionDetail {
     pub metadata: serde_json::Value,
     pub mint: Vec<MintAsset>,
     pub outputs: Vec<Utxo>,
-    pub redeemers: Vec<Redeemers>,
+    pub redeemers: Redeemers,
     pub reference_inputs: Vec<serde_json::Value>,
     pub scripts_executed: Vec<Script>,
     pub scripts_succesful: bool,
