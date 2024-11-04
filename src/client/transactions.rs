@@ -42,7 +42,6 @@ impl Maestro {
     ) -> Result<TransactionDetails, Box<dyn Error>> {
         let url = format!("/transactions/{}", tx_hash);
         let resp = self.get(&url).await?;
-        println!("{}", resp);
         let transaction_details =
             serde_json::from_str(&resp).map_err(|e| Box::new(e) as Box<dyn Error>)?;
         Ok(transaction_details)
